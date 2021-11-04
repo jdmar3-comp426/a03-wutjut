@@ -11,8 +11,8 @@ import {variance} from "./data/stats_helpers.js";
  */
 export function getSum(array) {
     var sum = 0
-    for(i= 0; i < array.length; i++){
-        sum += array[i];
+    for(let i= 0; i < array.length; i++){
+        sum += array[i]
     }
     return sum;
 }
