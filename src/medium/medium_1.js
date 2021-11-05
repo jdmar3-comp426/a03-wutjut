@@ -10,11 +10,11 @@ import {variance} from "./data/stats_helpers.js";
  * prototype functions. Very useful
  */
 export function getSum(array) {
-    var sum = 0
+    let sum = 0
     for(let i= 0; i < array.length; i++){
         sum += array[i]
     }
-    return sum;
+    return sum
 }
 
 
@@ -30,12 +30,12 @@ export function getSum(array) {
 export function getMedian(array) {
     var arraySorted = array.sort(function(a, b){return a - b})
     if(array.length == 0){
-        return null //GUESS
+        return 0
     }
     if((array.length%2) == 0){
         return (arraySorted[(array.length/2) - 1] + arraySorted[array.length/2])/2
     } else {
-        return arraySorted[array.length/2]
+        return arraySorted[floor(array.length/2)]
     }
 
 }
@@ -73,5 +73,4 @@ export function getStatistics(array) {
     return {min: Math.min.apply(null, array), median: getMedian(array), max: Math.max.apply(null, array), variance: variance, mean: mean, length: array.length, sum: getSum(array), standard_deviation: Math.sqrt(getSum(standArray.map(x => Math.pow(x - mean, 2))) / array.length)}
 }
 
-print(getStatistics([1, 2, 3, 4]))
 
