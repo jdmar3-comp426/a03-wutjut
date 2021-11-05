@@ -63,13 +63,7 @@ export function getMedian(array) {
  */
 export function getStatistics(array) {
     var mean = getSum(array)/array.length
-    var standArray = array.slice()
-    var varArray = array.map(squareDiff)
-    var variance = getSum(varArray)/array.length
-    function squareDiff(num){
-        return Math.pow(num - mean,2)
-    }
-    return {length: array.length, sum: getSum(array), mean: mean, median: getMedian(array), min: Math.min.apply(null, array), max: Math.max.apply(null, array), variance: variance, standard_deviation: Math.sqrt(getSum(standArray.map(x => Math.pow(x - mean, 2))) / array.length)}
+    return {length: array.length, sum: getSum(array), mean: mean, median: getMedian(array), min: Math.min.apply(null, array), max: Math.max.apply(null, array), variance: variance(array, mean), standard_deviation: Math.sqrt(variance(array, mean))}
 }
 
 
