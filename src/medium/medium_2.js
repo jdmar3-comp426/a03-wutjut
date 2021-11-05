@@ -1,3 +1,4 @@
+import { sumToString } from "../mild/mild_1.js";
 import mpg_data from "./data/mpg_data.js";
 import {getStatistics} from "./medium_1.js";
 
@@ -20,9 +21,9 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined, //getStatistics(list(mpg_data.map(function(car){(car.city_mpg + car.highway_mpg)/2}))).mean,
-    allYearStats: undefined, //getStatistics(list(mpg_data.map(function(car){car.year}))),
-    ratioHybrids: undefined,
+    avgMpg: {city: getStatistics(mpg_data.map(function(car){return car.city_mpg})).mean, highway: getStatistics(mpg_data.map(function(car){return car.highway_mpg})).mean},
+    allYearStats: getStatistics(mpg_data.map(function(car){return car.year})),
+    ratioHybrids: mpg_data.map(function(car){ if (car.hybrid == true){return 1} return 0}).reduce((accumulator, curr) => accumulator + curr) / mpg_data.length
 };
 
 
