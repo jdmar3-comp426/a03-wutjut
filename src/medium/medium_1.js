@@ -62,11 +62,10 @@ export function getMedian(array) {
  }
  */
 export function getStatistics(array) {
-    var variance = getSum(varArray)/array.length
     var mean = getSum(array)/array.length
     var standArray = array.slice()
-    var varArray = [];
     var varArray = array.map(squareDiff)
+    var variance = getSum(varArray)/array.length
     function squareDiff(num){
         return Math.pow(num - mean,2)
     }
