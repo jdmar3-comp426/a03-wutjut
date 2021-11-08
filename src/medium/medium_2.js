@@ -107,9 +107,11 @@ export function hybridModelList(make){
 }
 
 
+
 export const moreStats = {
-    makerHybrids: hybridBrandList().map(function(brand){return {"make": brand}}),
+    makerHybrids: hybridBrandList().map(function(brand){return {make: brand, hybrids: hybridModelList(brand)}}), // something wrong with this line
     // maps onto each hybrid brand the list of hybrid models
-    avgMpgByYearAndHybrid: {'data': 'data'}
+    // something is wrong with the way i am mapping
+    avgMpgByYearAndHybrid: {} // wait to move forward till you've figured out issue here
     // for each year, generate avg mpg of hybrid and none hybrid (use get stat function on an array of mpg for hybrids/ non hybrids
 };
