@@ -85,18 +85,18 @@ export const allCarStats = {
  * }
  */
 
-function hybridBrandList(){
-    let brands = new Set();
+export function hybridBrandList(){
+    let brands = [];
     for(let i = 0; i < mpg_data.length; i++){
-        if(mpg_data[i].hybrid == 1){
-            brands.add(mpg_data[i].make)
+        if((mpg_data[i].hybrid == 1) && !(brands.includes(mpg_data[i].make))){
+            brands.push(mpg_data[i].make)
         }
     }
-    return list(brands)
+    return brands
 }
 
-function hybridModelList(make){
-    let hybrids = []
+export function hybridModelList(make){
+    let hybrids = [] // create a new array
     // if you are truly seeking forgiveness, you are going to improve
     for(let i = 0; i < mpg_data.length; i++){
         if((make == mpg_data[i].make) && (mpg_data[i].hybrid == true)){
