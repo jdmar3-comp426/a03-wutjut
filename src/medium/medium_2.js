@@ -92,7 +92,7 @@ function hybridBrandList(){
             brands.add(mpg_data[i].make)
         }
     }
-    return brands
+    return list(brands)
 }
 
 function hybridModelList(make){
