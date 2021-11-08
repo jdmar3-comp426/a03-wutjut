@@ -86,7 +86,7 @@ export const allCarStats = {
  */
 
 function hybridBrandList(){
-    let brands = Set();
+    let brands = new Set();
     for(let i = 0; i < mpg_data.length; i++){
         if(mpg_data[i].hybrid == 1){
             brands.add(mpg_data[i].make)
