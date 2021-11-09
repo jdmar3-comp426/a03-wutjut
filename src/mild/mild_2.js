@@ -97,7 +97,7 @@ export function removeKeyNonDestructive(object, key) {
 export function removeKeys(object, keyList) {
    var copy = object.copy
    for(let k = 0; k < keyList.length; k++){
-      delete copy[keyList.at(k)]
+      delete copy[keyList.pop()]
    }
    return copy
 }
