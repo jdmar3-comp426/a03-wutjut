@@ -19,8 +19,6 @@ console.log('getStatistics([3, 4]) :')
 console.log(getStatistics([3, 4]))
 
 console.log(allCarStats)
-
-console.log(moreStats)
 */
 
-tenTimes(10)
+console.log(moreStats)

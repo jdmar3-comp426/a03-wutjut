@@ -85,22 +85,22 @@ export const allCarStats = {
  * }
  */
 
-export function hybridBrandList(){
-    let brands = [];
-    for(let i = 0; i < mpg_data.length; i++){
-        if((mpg_data[i].hybrid == 1) && !(brands.includes(mpg_data[i].make))){
-            brands.push(mpg_data[i].make)
+export function hybridBrandList(car_data){
+    var brands = [];
+    for(let i = 0; i < car_data.length; i++){
+        if((car_data[i].hybrid == 1) && !(brands.includes(car_data[i].make))){
+            brands.push(car_data[i].make)
         }
     }
     return brands
 }
 
-export function hybridModelList(make){
-    let hybrids = [] // create a new array
+export function hybridModelList(car_data, make){
+    var hybrids = [] // create a new array
     // if you are truly seeking forgiveness, you are going to improve
-    for(let i = 0; i < mpg_data.length; i++){
-        if((make == mpg_data[i].make) && (mpg_data[i].hybrid == true)){
-            hybrids.push(mpg_data[i].id)
+    for(let i = 0; i < car_data.length; i++){
+        if((make == car_data[i].make) && (car_data[i].hybrid == true)){
+            hybrids.push(car_data[i].id)
         } // bascially makes a list for the given make of all the hybrids
     }
     return hybrids
@@ -109,9 +109,9 @@ export function hybridModelList(make){
 
 
 export const moreStats = {
-    makerHybrids: hybridBrandList().map(function(brand){return {make: brand, hybrids: hybridModelList(brand)}}), // something wrong with this line
+    makerHybrids: hybridBrandList(mpg_data).map(function(brand){return {make: brand, hybrids: hybridModelList(mpg_data, brand)}}), // something wrong with this line
     // maps onto each hybrid brand the list of hybrid models
     // something is wrong with the way i am mapping
-    avgMpgByYearAndHybrid: {} // wait to move forward till you've figured out issue here
+    avgMpgByYearAndHybrid: {dog: 'cat'} // wait to move forward till you've figured out issue here
     // for each year, generate avg mpg of hybrid and none hybrid (use get stat function on an array of mpg for hybrids/ non hybrids
 };
