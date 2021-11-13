@@ -35,7 +35,7 @@ export function getMedian(array) {
     if((array.length%2) == 0){
         return (arraySorted[(array.length/2) - 1] + arraySorted[array.length/2])/2
     } else {
-        return arraySorted[floor(array.length/2)]
+        return arraySorted[Math.floor(array.length/2)]
     }
 
 }
