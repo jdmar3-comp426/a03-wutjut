@@ -121,7 +121,7 @@ function generate_moreStats(car_data){
         let hybrids_highway= []
         let non_hybrids_city =[]
         let non_hybrids_highway =[]
-        for(let j = 0; i< car_data.length; j++){
+        for(let j = 0; j< car_data.length; j++){
             if(year_arr[i]==car_data[j].year){
                 if(car_data[j].hybrid){
                     hybrids_city.push(car_data[j].city_mpg)
