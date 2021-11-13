@@ -126,7 +126,9 @@ function generate_moreStats(car_data){
                 }// add to morestat the correct dictionary item
             }
         }
-        moreStats.
+        
+    }
+    return false
 }
 
 export const moreStats = {
