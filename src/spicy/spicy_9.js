@@ -163,7 +163,7 @@ export const someEven = (arr, test) => {
 export const filter = (arr, test) => {
     var pass = []
     var fail = []
-    for(let i = 0; i< arr.lengthl; i++){
+    for(let i = 0; i< arr.length; i++){
         if(test.call(arr[i])){
             pass.push(arr[i])
         } else {
