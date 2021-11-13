@@ -180,7 +180,7 @@ export const filter = (arr, test) => {
  *   odd numbers. Use the "everyEven" function in this function.
  */
 export const allEvensAreOdd = (arr) => {
-    everyEven(arr, function a(num){return (num%2 != 0)})
+    return everyEven(arr, (num)=>{return (num%2 != 0)})
 };
 
 
@@ -190,7 +190,7 @@ export const allEvensAreOdd = (arr) => {
  *   array is an odd number. Use the "someEven" function in this function.
  */
 export const anEvenIsOdd = (arr) => {
-    someEven(arr, function a(num){return (num%2 != 0)})
+    return someEven(arr, (num)=>{return (num%2 != 0)})
 };
 
 
