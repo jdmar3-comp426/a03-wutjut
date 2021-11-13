@@ -106,10 +106,31 @@ export function hybridModelList(car_data, make){
     return hybrids
 }
 
+function generate_moreStats(car_data){
+    var year_arr = []
+    for( let i =0; i<car_data.length; i++){
+        if(!year_arr.includes(car_data[i].year)){
+            year_arr.push(car_data[i].year)
+        }
+    }
 
+    var morestat = {}
+
+    for(let i = 0; i< year_arr.length; i++){
+        let hybrids = []
+        let non_hybrids =[]
+        for(let j = 0; i< car_data.length; i++){
+            if(year_arr[i]==car_arr[j].year){
+                if(car_data[i].hybrid){
+                    hybrids.push(car_data[i].id)
+                }// add to morestat the correct dictionary item
+            }
+        }
+        moreStats.
+}
 
 export const moreStats = {
-    makerHybrids: hybridBrandList(mpg_data).map(function(brand){return {make: brand, hybrids: hybridModelList(mpg_data, brand)}}), // something wrong with this line
+    // makerHybrids: hybridBrandList(mpg_data).map(function(brand){return {make: brand, hybrids: hybridModelList(mpg_data, brand)}}), // something wrong with this line
     // maps onto each hybrid brand the list of hybrid models
     // something is wrong with the way i am mapping
     avgMpgByYearAndHybrid: {dog: 'cat'} // wait to move forward till you've figured out issue here
