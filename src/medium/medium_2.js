@@ -130,8 +130,8 @@ function generate_moreStats(car_data){
                     non_hybrids_city.push(car_data[j].city_mpg)
                     non_hybrids_highway.push(car_data[j].highway_mpg)
                 }
-                morestat[year_arr[i]] = {hybrid:{city: hybrids_city.getStatistics.mean, highway: hybrids_highway.getStatistics.mean}, 
-                notHybrid: {city: non_hybrids_city.getStatistics.mean, highway: non_hybrids_highway.getStatistics.mean}}
+                morestat[year_arr[i]] = {hybrid:{city: getStatistics(hybrids_city).mean, highway: getStatistics(hybrids_highway).mean}, 
+                notHybrid: {city: getStatistics(non_hybrids_city).mean, highway: getStatistics(non_hybrids_highway).mean}}
                 // add to morestat the correct dictionary item
             } 
         }
