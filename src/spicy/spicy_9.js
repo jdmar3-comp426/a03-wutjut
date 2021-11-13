@@ -180,8 +180,8 @@ export const filter = (arr, test) => {
  *   odd numbers. Use the "everyEven" function in this function.
  */
 
- function isOdd(a){
-    return (a%2) // returns true if a mod 2 is not 0
+export function isOdd(a){
+    return (Math.abs(a)%2) // returns true if a mod 2 is not 0
 }
 
 

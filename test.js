@@ -21,4 +21,4 @@ console.log(getStatistics([3, 4]))
 console.log(allCarStats)
 */
 
-console.log(isOdd(5))
+console.log(isOdd(-1))
