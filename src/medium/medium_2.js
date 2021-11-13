@@ -116,25 +116,34 @@ function generate_moreStats(car_data){
 
     var morestat = {}
 
-    for(let i = 0; i< year_arr.length; i++){
-        let hybrids = []
-        let non_hybrids =[]
-        for(let j = 0; i< car_data.length; i++){
+    for(let i = 0; i< year_arr.length; i++){ // for each year in car_data
+        let hybrids_city= []
+        let hybrids_highway= []
+        let non_hybrids_city =[]
+        let non_hybrids_highway =[]
+        for(let j = 0; i< car_data.length; j++){
             if(year_arr[i]==car_arr[j].year){
-                if(car_data[i].hybrid){
-                    hybrids.push(car_data[i].id)
-                }// add to morestat the correct dictionary item
-            }
+                if(car_data[j].hybrid){
+                    hybrids_city.push(car_data[j].city_mpg)
+                    hybrids_highway.push(car_data[j].highway_mpg)
+                } else{
+                    non_hybrids_city.push(car_data[j].city_mpg)
+                    non_hybrids_highway.push(car_data[j].highway_mpg)
+                }
+                morestat[year_arr[i]] = {hybrid:{city: hybrids_city.getStatistics.mean, highway: hybrids_highway.getStatistics.mean}, 
+                notHybrid: {city: non_hybrids_city.getStatistics.mean, highway: non_hybrids_highway.getStatistics.mean}}
+                // add to morestat the correct dictionary item
+            } 
         }
         
     }
-    return false
+    return morestat
 }
 
 export const moreStats = {
     // makerHybrids: hybridBrandList(mpg_data).map(function(brand){return {make: brand, hybrids: hybridModelList(mpg_data, brand)}}), // something wrong with this line
     // maps onto each hybrid brand the list of hybrid models
     // something is wrong with the way i am mapping
-    avgMpgByYearAndHybrid: {dog: 'cat'} // wait to move forward till you've figured out issue here
+    avgMpgByYearAndHybrid: generate_moreStats(mpg_data) // wait to move forward till you've figured out issue here
     // for each year, generate avg mpg of hybrid and none hybrid (use get stat function on an array of mpg for hybrids/ non hybrids
 };
