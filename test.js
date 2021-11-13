@@ -21,9 +21,8 @@ console.log(getStatistics([3, 4]))
 console.log(allCarStats)
 */
 
-console.log(allEvensAreOdd([1,2,3, -1, -1, 0, 0]))
+console.log(everyEven([1,2,3, -1, -1, 0, 0], isOdd))
 
 console.log(anEvenIsOdd([1,2,3, -1]))
-
 
 console.log(isOdd(0))
