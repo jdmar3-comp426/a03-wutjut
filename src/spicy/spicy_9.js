@@ -181,7 +181,7 @@ export const filter = (arr, test) => {
  */
 export const allEvensAreOdd = (arr) => {
     function b(a){
-        return ((a%2) != 0) // returns true if a mod 2 is not 0
+        return (a%2) // returns true if a mod 2 is not 0
     }
     return everyEven(arr, b)
 };
@@ -194,7 +194,7 @@ export const allEvensAreOdd = (arr) => {
  */
 export const anEvenIsOdd = (arr) => {
     function b(a){
-        return ((a%2) != 0) // returns true if a mod 2 is not 0
+        return (a%2) // returns true if a mod 2 is not 0
     }
     return someEven(arr, b)
 };
