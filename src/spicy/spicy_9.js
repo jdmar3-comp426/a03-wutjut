@@ -99,7 +99,7 @@ export const tenTimesFifty = () => {
 export const everyEven = (arr, test) => {
     for(let i = 0; i< arr.lengthl; i++){
         if(i%2 == 0){
-            if(!test.call(arr[i])){
+            if(!test(arr[i])){
                 return false
             }
         }
@@ -130,7 +130,7 @@ export const everyEven = (arr, test) => {
 export const someEven = (arr, test) => {
     for(let i = 0; i< arr.lengthl; i++){
         if(i%2 == 0){
-            if(test.call(arr[i])){
+            if(test(arr[i])){
                 return true
             }
         }
