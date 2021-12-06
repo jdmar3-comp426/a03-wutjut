@@ -1,3 +1,4 @@
+import { sumToString } from "../mild/mild_1.js";
 import mpg_data from "./data/mpg_data.js";
 import {getStatistics} from "./medium_1.js";
 
@@ -20,9 +21,9 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: {city: getStatistics(mpg_data.map(function(car){return car.city_mpg})).mean, highway: getStatistics(mpg_data.map(function(car){return car.highway_mpg})).mean},
+    allYearStats: getStatistics(mpg_data.map(function(car){return car.year})),
+    ratioHybrids: mpg_data.map(function(car){ if (car.hybrid == true){return 1} return 0}).reduce((accumulator, curr) => accumulator + curr) / mpg_data.length
 };
 
 
@@ -83,7 +84,66 @@ export const allCarStats = {
  *
  * }
  */
+
+export function hybridBrandList(car_data){
+    var brands = [];
+    for(let i = 0; i < car_data.length; i++){
+        if((car_data[i].hybrid == 1) && !(brands.includes(car_data[i].make))){
+            brands.push(car_data[i].make)
+        }
+    }
+    return brands
+}
+
+export function hybridModelList(car_data, make){
+    var hybrids = [] // create a new array
+    // if you are truly seeking forgiveness, you are going to improve
+    for(let i = 0; i < car_data.length; i++){
+        if((make == car_data[i].make) && (car_data[i].hybrid == true)){
+            hybrids.push(car_data[i].id)
+        } // bascially makes a list for the given make of all the hybrids
+    }
+    return hybrids
+}
+
+function generate_moreStats(car_data){
+    var year_arr = []
+    for( let i =0; i<car_data.length; i++){
+        if(!year_arr.includes(car_data[i].year)){
+            year_arr.push(car_data[i].year)
+        }
+    }
+
+    var morestat = {}
+
+    for(let i = 0; i< year_arr.length; i++){ // for each year in car_data
+        let hybrids_city= []
+        let hybrids_highway= []
+        let non_hybrids_city =[]
+        let non_hybrids_highway =[]
+        for(let j = 0; j< car_data.length; j++){
+            if(year_arr[i]==car_data[j].year){
+                if(car_data[j].hybrid){
+                    hybrids_city.push(car_data[j].city_mpg)
+                    hybrids_highway.push(car_data[j].highway_mpg)
+                } else{
+                    non_hybrids_city.push(car_data[j].city_mpg)
+                    non_hybrids_highway.push(car_data[j].highway_mpg)
+                }
+                morestat[year_arr[i]] = {hybrid:{city: getStatistics(hybrids_city).mean, highway: getStatistics(hybrids_highway).mean}, 
+                notHybrid: {city: getStatistics(non_hybrids_city).mean, highway: getStatistics(non_hybrids_highway).mean}}
+                // add to morestat the correct dictionary item
+            } 
+        }
+        
+    }
+    return morestat
+}
+
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    // makerHybrids: hybridBrandList(mpg_data).map(function(brand){return {make: brand, hybrids: hybridModelList(mpg_data, brand)}}), // something wrong with this line
+    // maps onto each hybrid brand the list of hybrid models
+    // something is wrong with the way i am mapping
+    avgMpgByYearAndHybrid: generate_moreStats(mpg_data) // wait to move forward till you've figured out issue here
+    // for each year, generate avg mpg of hybrid and none hybrid (use get stat function on an array of mpg for hybrids/ non hybrids
 };
